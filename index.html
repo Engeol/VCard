@@ -6,38 +6,18 @@
     <title>Engeol Vega - Camera Department</title>
     <style>
         body { font-family: -apple-system, system-ui, sans-serif; background: #000; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { text-align: center; border: 1px solid #333; padding: 40px; border-radius: 24px; background: #111; width: 85%; max-width: 350px; }
-        h1 { font-size: 1.7rem; margin: 0 0 10px; letter-spacing: -0.03em; }
-        p { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 16px 32px; background: #fff; color: #000; font-weight: bold; text-decoration: none; border-radius: 50px; cursor: pointer; transition: 0.2s; }
-        .btn:active { transform: scale(0.96); }
-        .hint { margin-top: 20px; font-size: 0.75rem; color: #444; }
+        .card { text-align: center; border: 1px solid #333; padding: 40px; border-radius: 24px; background: #111; width: 85%; max-width: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-size: 1.8rem; margin: 0 0 10px; letter-spacing: -0.03em; }
+        p { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 35px; }
+        .btn { display: inline-block; padding: 18px 36px; background: #fff; color: #000; font-weight: bold; text-decoration: none; border-radius: 50px; transition: transform 0.2s, background 0.2s; }
+        .btn:active { transform: scale(0.95); background: #ccc; }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>Engeol Vega</h1>
         <p>Camera Department</p>
-        <div id="downloadBtn" class="btn">ADD TO CONTACTS</div>
-        <div class="hint">If preview appears, tap the Share icon and select 'Contacts'</div>
+        <a href="Engeol.vcf" class="btn">ADD TO CONTACT</a>
     </div>
-
-    <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            fetch('Engeol.vcf')
-                .then(resp => resp.blob())
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'Engeol.vcf';
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                })
-                .catch(() => alert('Error loading contact file.'));
-        });
-    </script>
 </body>
 </html>
